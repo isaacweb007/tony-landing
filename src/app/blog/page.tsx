@@ -1,105 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { PremiumBackdrop } from "@/components/landing/PremiumBackdrop";
 import { Footer } from "@/components/landing/Footer";
 import { PreregisterForm } from "@/components/landing/PreregisterForm";
 import { PencilIcon } from "@/components/landing/Icon";
-
-type NewsItem = {
-  id: string;
-  category: string;
-  categoryColor: string;
-  title: string;
-  excerpt: string;
-  source: string;
-  author: string;
-  date: string;
-  readTime: string;
-  image: string;
-};
-
-const newsItems: NewsItem[] = [
-  {
-    id: "n1",
-    category: "TECH",
-    categoryColor: "text-brand-violet bg-brand-violet/15 border-brand-violet/30",
-    title: "메신저도 이제 에이전트 시대 — Tony, 차세대 AI 메신저 공개 임박",
-    excerpt:
-      "글로벌 메신저 시장이 새로운 패러다임 전환을 맞이하고 있다. 카카오톡·iMessage·왓츠앱이 정의해온 '실시간 채팅'의 시대를 넘어, 사용자를 대신해 메시지를 읽고 답장까지 처리하는 '개인 에이전트' 시대가 본격 열린다.",
-    source: "TechCrunch Korea",
-    author: "김도현 기자",
-    date: "2026.05.10",
-    readTime: "4분",
-    image: "/images/blog/demo-1.png",
-  },
-  {
-    id: "n2",
-    category: "PRODUCT",
-    categoryColor: "text-brand-emerald bg-brand-emerald/15 border-brand-emerald/30",
-    title: "잠든 사이 메시지가 정리된다 — Tony 베타 출시 카운트다운",
-    excerpt:
-      "Tony AI는 사용자가 자는 동안에도 단톡방 230개 메시지를 자동 분류·요약하고, 긴급한 건만 골라 알림을 보낸다. 베타 사전등록자가 한 달 새 2만 명을 돌파했다.",
-    source: "The Verge",
-    author: "Sarah Park",
-    date: "2026.05.08",
-    readTime: "3분",
-    image: "/images/blog/demo-2.png",
-  },
-  {
-    id: "n3",
-    category: "AI",
-    categoryColor: "text-brand-amber bg-brand-amber/15 border-brand-amber/30",
-    title: "온디바이스 LLM이 바꾸는 프라이버시 — Tony의 기술적 도전",
-    excerpt:
-      "Llama 3.2 1B 모델을 아이폰에서 직접 구동시켜, 메시지 한 줄도 서버로 보내지 않는다. 'AI는 클라우드여야 한다'는 통념을 깨는 시도가 주목받고 있다.",
-    source: "WIRED",
-    author: "Andrew Chen",
-    date: "2026.05.05",
-    readTime: "6분",
-    image: "/images/blog/demo-3.png",
-  },
-  {
-    id: "n4",
-    category: "PRODUCT",
-    categoryColor: "text-brand-primary bg-brand-primary/15 border-brand-primary/30",
-    title: "230개 메시지를 3줄 브리핑으로 — Tony가 제안하는 새 커뮤니케이션",
-    excerpt:
-      "기존 메신저의 '읽지 않음 387' 뱃지를 없애는 게 목표다. Tony는 아침 30초 브리핑으로 밤사이 도착한 모든 메시지를 정리해 보여준다.",
-    source: "Bloomberg Technology",
-    author: "Mina Lee",
-    date: "2026.05.02",
-    readTime: "5분",
-    image: "/images/blog/demo-4.png",
-  },
-  {
-    id: "n5",
-    category: "AI",
-    categoryColor: "text-brand-rose bg-brand-rose/15 border-brand-rose/30",
-    title: "내 말투를 학습한 AI가 답장한다 — Tony의 95% 톤 매칭 정확도",
-    excerpt:
-      "친구별·관계별로 다른 말투를 따로 학습하는 '톤 엔진'. 친구가 받았을 때 'AI가 보낸 건지 모르겠다'고 답한 비율이 95%에 달했다는 내부 테스트 결과가 공개됐다.",
-    source: "MIT Technology Review",
-    author: "Daniel Wright",
-    date: "2026.04.28",
-    readTime: "5분",
-    image: "/images/blog/demo-1.png",
-  },
-  {
-    id: "n6",
-    category: "STARTUP",
-    categoryColor: "text-brand-violet bg-brand-violet/15 border-brand-violet/30",
-    title: "에이전트끼리 약속을 잡는 시대 — Tony의 A2A 네트워크 공개",
-    excerpt:
-      "'우리 언제 볼래?'를 7번 주고받지 않아도 된다. 양쪽 에이전트가 캘린더를 협상해 약속을 잡고, 사용자는 결과만 확인하면 되는 Agent-to-Agent 프로토콜이 베일을 벗었다.",
-    source: "Forbes",
-    author: "Jenny Hwang",
-    date: "2026.04.25",
-    readTime: "4분",
-    image: "/images/blog/demo-2.png",
-  },
-];
+import { newsItems } from "@/lib/blog-data";
 
 export default function BlogPage() {
   return (
@@ -137,7 +45,7 @@ export default function BlogPage() {
                 key={item.id}
                 className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] hover:border-white/25 hover:bg-white/[0.05] hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
               >
-                <a href="#" className="flex flex-col h-full">
+                <Link href={`/blog/${item.id}`} className="flex flex-col h-full">
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
                     <Image
                       src={item.image}
@@ -168,10 +76,15 @@ export default function BlogPage() {
                     </p>
                     <div className="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] text-white/45 font-body">
                       <span>By {item.author}</span>
-                      <span>{item.readTime} 읽기</span>
+                      <span className="inline-flex items-center gap-1 group-hover:text-brand-primary transition-colors">
+                        기사 읽기
+                        <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
                     </div>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>
@@ -200,12 +113,12 @@ export default function BlogPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-white/70 transition-colors font-body"
             >
               ← 홈으로 돌아가기
-            </a>
+            </Link>
           </div>
         </div>
       </main>

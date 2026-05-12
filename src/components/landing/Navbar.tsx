@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import type { ComponentType, SVGProps } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { Button } from "./Button";
 import {
@@ -37,6 +38,8 @@ const navLinks: NavLink[] = [
 
 export function Navbar() {
   const t = useT();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -91,10 +94,23 @@ export function Navbar() {
     document.body.style.overflow = "";
     setMobileOpen(false);
     if (href === "#") {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Logo click — on home scroll to top, elsewhere go home.
+      if (isHome) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        e.preventDefault();
+        window.location.href = "/";
+      }
+      return;
     }
-    // Path links (/blog) and section anchors (#features) both fall through to native nav.
+    if (href.startsWith("#") && !isHome) {
+      // Anchor like #features on a non-home page → go to home + anchor.
+      e.preventDefault();
+      window.location.href = `/${href}`;
+      return;
+    }
+    // Path links (/blog) and section anchors (#features) on home fall through to native nav.
   };
 
   // Close on Escape
