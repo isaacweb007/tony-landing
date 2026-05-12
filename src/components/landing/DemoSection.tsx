@@ -1,16 +1,73 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./Button";
-import { VideoModal } from "./VideoModal";
 import { GradientOrb } from "./GradientOrb";
 import { RocketIcon } from "./Icon";
 import { useT } from "@/i18n/I18nProvider";
 
+const YT_VIDEO_ID = "XeoM-vrNrr0";
+
+declare global {
+  interface Window {
+    YT?: {
+      Player: new (
+        el: HTMLElement | string,
+        opts: { events?: { onStateChange?: (e: { data: number }) => void } }
+      ) => YTPlayer;
+      PlayerState: { ENDED: number };
+    };
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+interface YTPlayer {
+  getDuration: () => number;
+  seekTo: (seconds: number, allowSeekAhead: boolean) => void;
+  pauseVideo: () => void;
+}
+
 export function DemoSection() {
   const t = useT();
-  const [videoOpen, setVideoOpen] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
+
+  useEffect(() => {
+    if (!playing) return;
+
+    const initPlayer = () => {
+      if (!iframeRef.current || !window.YT) return;
+      playerRef.current = new window.YT.Player(iframeRef.current, {
+        events: {
+          onStateChange: (e) => {
+            // 0 === ENDED
+            if (e.data === 0 && playerRef.current) {
+              const duration = playerRef.current.getDuration();
+              playerRef.current.seekTo(Math.max(0, duration - 0.1), true);
+              playerRef.current.pauseVideo();
+            }
+          },
+        },
+      });
+    };
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.body.appendChild(tag);
+      }
+      window.onYouTubeIframeAPIReady = initPlayer;
+    }
+
+    return () => {
+      playerRef.current = null;
+    };
+  }, [playing]);
 
   return (
     <section
@@ -72,21 +129,42 @@ export function DemoSection() {
           className="relative max-w-3xl mx-auto mb-12"
         >
           <div
-            onClick={() => setVideoOpen(true)}
-            className="relative aspect-video rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-pointer group hover:border-white/20 transition-all"
+            onClick={() => !playing && setPlaying(true)}
+            className="relative aspect-video rounded-2xl bg-black border border-white/10 overflow-hidden group hover:border-white/20 transition-all"
+            style={{ cursor: playing ? "default" : "pointer" }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-brand-violet/10" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-            <div className="absolute bottom-6 left-6 right-6 text-left">
-              <div className="text-white/60 text-sm font-body">{t("demo.video.label")}</div>
-              <div className="text-white font-display font-semibold">{t("demo.video.title")}</div>
-            </div>
+            {playing ? (
+              <iframe
+                ref={iframeRef}
+                src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
+                title="Tony Demo"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://i.ytimg.com/vi/${YT_VIDEO_ID}/maxresdefault.jpg`}
+                  alt={t("demo.video.title")}
+                  className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-brand-violet/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-black/30">
+                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute bottom-6 left-6 right-6 text-left">
+                  <div className="text-white/60 text-sm font-body">{t("demo.video.label")}</div>
+                  <div className="text-white font-display font-semibold">{t("demo.video.title")}</div>
+                </div>
+              </>
+            )}
           </div>
         </motion.div>
 
@@ -121,7 +199,6 @@ export function DemoSection() {
         </motion.div>
       </div>
 
-      <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
     </section>
   );
 }
