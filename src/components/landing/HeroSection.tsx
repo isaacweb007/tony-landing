@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "./Button";
 import { VideoModal } from "./VideoModal";
-import { PreregisterForm } from "./PreregisterForm";
+import { PreregisterModal } from "./PreregisterModal";
 import { useT } from "@/i18n/I18nProvider";
 import type { TKey } from "@/i18n/dictionaries";
 
@@ -27,6 +27,7 @@ const LIVE_KEYS: TKey[] = ["hero.live.1", "hero.live.2", "hero.live.3", "hero.li
 export function HeroSection() {
   const t = useT();
   const [videoOpen, setVideoOpen] = useState(false);
+  const [preregOpen, setPreregOpen] = useState(false);
   const [wordIdx, setWordIdx] = useState(0);
   const [liveIdx, setLiveIdx] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
@@ -252,7 +253,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6"
         >
           <Button variant="primary" size="lg" href="https://tony-ai.app/" className="!px-8 group">
             <span className="inline-flex items-center gap-2">
@@ -260,15 +261,46 @@ export function HeroSection() {
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </span>
           </Button>
-          <Button variant="secondary" size="lg" href="#problem" className="!px-8">
+          <Button
+            variant="secondary"
+            size="lg"
+            onClick={() => setPreregOpen(true)}
+            className="!px-8 group"
+          >
+            <span className="inline-flex items-center gap-2">
+              <svg className="w-4 h-4 text-brand-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {t("prereg.cta")}
+            </span>
+          </Button>
+          <Button variant="ghost" size="lg" href="#problem" className="!px-6">
             {t("hero.deck.cta.read")} ↓
           </Button>
         </motion.div>
 
-        {/* Pre-register form */}
-        <div className="mb-14">
-          <PreregisterForm source="hero" variant="compact" />
-        </div>
+        {/* Inline reassurance line under CTAs */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.05, duration: 0.5 }}
+          className="text-[12px] text-white/40 font-body mb-14 flex items-center justify-center gap-3 flex-wrap"
+        >
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-brand-emerald" />
+            {t("prereg.feature.1")}
+          </span>
+          <span className="text-white/15">·</span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-brand-emerald" />
+            {t("prereg.feature.2")}
+          </span>
+          <span className="text-white/15">·</span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-brand-emerald" />
+            {t("prereg.feature.3")}
+          </span>
+        </motion.p>
 
         {/* Stats card with count-up */}
         <motion.div
@@ -302,6 +334,7 @@ export function HeroSection() {
       </motion.div>
 
       <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
+      <PreregisterModal isOpen={preregOpen} onClose={() => setPreregOpen(false)} source="hero" />
 
       <style jsx>{`
         @keyframes shimmer {

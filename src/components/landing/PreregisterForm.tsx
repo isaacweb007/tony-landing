@@ -68,7 +68,7 @@ export function PreregisterForm({ source = "hero", variant = "compact" }: Props)
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.2, duration: 0.6 }}
+      transition={{ duration: 0.4 }}
       className={
         variant === "compact"
           ? "max-w-xl mx-auto"
