@@ -12,6 +12,7 @@ import {
   CrownIcon,
   RocketIcon,
   HeartIcon,
+  PencilIcon,
 } from "./Icon";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useT } from "@/i18n/I18nProvider";
@@ -30,6 +31,7 @@ const navLinks: NavLink[] = [
   { labelKey: "nav.privacy",   href: "#privacy",  descKey: "nav.privacy.desc",  Icon: ShieldLockIcon, accent: "text-brand-emerald" },
   { labelKey: "nav.market",    href: "#market",   descKey: "nav.market.desc",   Icon: ChartIcon, accent: "text-brand-amber" },
   { labelKey: "nav.pricing",   href: "#pricing",  descKey: "nav.pricing.desc",  Icon: CrownIcon, accent: "text-brand-primary" },
+  { labelKey: "nav.blog",      href: "/blog",     descKey: "nav.blog.desc",     Icon: PencilIcon, accent: "text-brand-amber" },
   { labelKey: "nav.demo",      href: "#demo",     descKey: "nav.demo.desc",     Icon: RocketIcon, accent: "text-brand-rose" },
 ];
 
@@ -92,8 +94,7 @@ export function Navbar() {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    // For section anchors, let the native href jump handle scrolling.
-    // scroll-behavior:smooth + scroll-padding-top:80px on <html> ensures correct offset.
+    // Path links (/blog) and section anchors (#features) both fall through to native nav.
   };
 
   // Close on Escape
@@ -133,7 +134,7 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1 rounded-full px-2 py-1 bg-white/[0.03] border border-white/5">
-            {navLinks.slice(0, 4).map((link) => {
+            {navLinks.slice(0, 5).map((link) => {
               const isActive = activeId === link.href.slice(1);
               return (
                 <a

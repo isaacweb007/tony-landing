@@ -663,6 +663,36 @@ export const dict = {
   "hero.rotate.4":       t("번역합니다.", "translates.", "翻訳します。", "在翻译。", "đang dịch."),
   "hero.rotate.5":       t("기억합니다.", "remembers.", "覚えます。", "在记忆。", "đang ghi nhớ."),
 
+  // === Preregister form ===
+  "prereg.tag":          t("얼리 액세스", "Early Access", "アーリーアクセス", "抢先体验", "Truy cập sớm"),
+  "prereg.title":        t("출시 알림 + 베타 우선권 받기", "Get launch alert + beta priority", "ローンチ通知+ベータ優先権", "首发提醒 + 内测优先权", "Nhận thông báo ra mắt + ưu tiên beta"),
+  "prereg.sub":          t("지금 신청하면 정식 출시 전 먼저 테스트하실 수 있습니다. 스팸 보내지 않습니다.", "Sign up now to test before public launch. No spam, ever.", "今申し込めば正式リリース前にテスト可能。スパムは送りません。", "现在报名,可在正式发布前抢先体验。绝不发垃圾邮件。", "Đăng ký để dùng trước khi ra mắt chính thức. Không spam."),
+  "prereg.placeholder":  t("이메일 주소", "Your email address", "メールアドレス", "邮箱地址", "Email của bạn"),
+  "prereg.cta":          t("사전 예약 신청", "Reserve my spot", "事前登録する", "立即预约", "Đặt chỗ"),
+  "prereg.cta.loading":  t("신청 중...", "Submitting...", "送信中...", "提交中…", "Đang gửi..."),
+  "prereg.success.title":t("환영합니다!", "You're in!", "ようこそ!", "欢迎你!", "Chào mừng!"),
+  "prereg.success.body": t("출시 알림과 베타 초대장을 이메일로 보내드릴게요. 보통 평일 24시간 내 답변드립니다.", "We'll send you the launch alert and beta invite by email. Usually within 24h on weekdays.", "ローンチ通知とベータ招待をメールでお送りします。通常平日24時間以内に返信します。", "我们会通过邮件发送发布提醒和内测邀请,通常工作日 24 小时内回复。", "Chúng tôi sẽ gửi email thông báo ra mắt và lời mời beta. Thường trong 24h ngày làm việc."),
+  "prereg.success.position": t("당신은 {n}번째 대기자입니다", "You're #{n} on the waitlist", "あなたは{n}番目の登録者です", "你是第 {n} 位等候者", "Bạn là người thứ {n} trong danh sách chờ"),
+  "prereg.error.invalid":t("유효한 이메일 주소를 입력해 주세요.", "Please enter a valid email.", "有効なメールアドレスを入力してください。", "请输入有效的邮箱地址。", "Vui lòng nhập email hợp lệ."),
+  "prereg.error.generic":t("일시적 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.", "Something went wrong. Please try again.", "一時的なエラーが発生しました。後ほど再試行してください。", "出现临时错误,请稍后重试。", "Lỗi tạm thời. Vui lòng thử lại sau."),
+  "prereg.error.duplicate":t("이미 등록된 이메일입니다. 확인 메일을 보내드렸어요.", "Already registered. We've re-sent your confirmation.", "既に登録済みです。確認メールを再送しました。", "邮箱已注册。我们重新发送了确认邮件。", "Email đã đăng ký. Chúng tôi đã gửi lại xác nhận."),
+  "prereg.privacy":      t("이메일은 출시 알림 외 용도로 사용하지 않으며, 언제든 수신 거부 가능합니다.", "We only use your email for launch updates. Unsubscribe anytime.", "メールは通知以外に使用せず、いつでも配信停止可能です。", "邮箱仅用于发送更新,可随时退订。", "Email chỉ dùng để báo tin. Có thể hủy bất kỳ lúc nào."),
+  "prereg.feature.1":    t("출시 즉시 알림", "Instant launch alert", "ローンチ即時通知", "首发即时提醒", "Thông báo ra mắt tức thì"),
+  "prereg.feature.2":    t("베타 우선 초대", "Priority beta invite", "ベータ優先招待", "内测优先邀请", "Ưu tiên mời beta"),
+  "prereg.feature.3":    t("3개월 Pro 무료", "3 months Pro free", "3ヶ月Pro無料", "3 个月 Pro 免费", "3 tháng Pro miễn phí"),
+
+  // === Navbar — Blog ===
+  "nav.blog":            t("블로그", "Blog", "ブログ", "博客", "Blog"),
+  "nav.blog.desc":       t("개발 일지 · 산업 인사이트", "Dev notes · industry insights", "開発日記・業界の洞察", "开发日志 · 行业洞察", "Nhật ký phát triển · góc nhìn ngành"),
+
+  // === Blog page ===
+  "blog.tag":            t("Tony 블로그", "Tony Blog", "Tonyブログ", "Tony 博客", "Tony Blog"),
+  "blog.title":          t("우리가 만드는 미래 이야기", "Stories from the future we're building", "私たちが作る未来の物語", "我们正在打造的未来", "Câu chuyện về tương lai chúng tôi đang xây"),
+  "blog.subtitle":       t("AI 에이전트, 메신저의 진화, 그리고 Tony를 만드는 사람들의 기록.", "AI agents, the evolution of messengers, and the people building Tony.", "AIエージェント、メッセンジャーの進化、Tonyを作る人々の記録。", "AI 代理、通讯应用的进化,以及打造 Tony 的人们。", "Đại lý AI, sự tiến hóa của ứng dụng nhắn tin, và những người xây dựng Tony."),
+  "blog.coming.title":   t("첫 번째 글을 준비 중입니다", "First post coming soon", "最初の記事を準備中です", "首篇文章正在准备", "Bài đầu tiên sắp ra mắt"),
+  "blog.coming.body":    t("Tony의 비하인드 스토리, A2A 프로토콜 설계, 그리고 다국어 메신저를 만드는 과정. 공개되면 사전 예약자에게 가장 먼저 알려드릴게요.", "Behind-the-scenes on Tony, A2A protocol design, and lessons from building a multilingual messenger. Preregistrants hear first.", "Tonyの裏話、A2Aプロトコル設計、多言語メッセンジャー開発の学び。事前登録者に最初に通知します。", "Tony 幕后、A2A 协议设计、打造多语种通讯应用的心得。预约用户最先收到通知。", "Câu chuyện hậu trường về Tony, thiết kế giao thức A2A, và bài học xây ứng dụng nhắn tin đa ngôn ngữ. Người đăng ký sớm nghe trước."),
+  "blog.back":           t("← 홈으로 돌아가기", "← Back to home", "← ホームに戻る", "← 返回首页", "← Về trang chủ"),
+
   // === Common ===
   "common.lang":         t("언어", "Language", "言語", "语言", "Ngôn ngữ"),
 } as const;

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "./Button";
 import { VideoModal } from "./VideoModal";
+import { PreregisterForm } from "./PreregisterForm";
 import { useT } from "@/i18n/I18nProvider";
 import type { TKey } from "@/i18n/dictionaries";
 
@@ -251,7 +252,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
         >
           <Button variant="primary" size="lg" href="https://tony-ai.app/" className="!px-8 group">
             <span className="inline-flex items-center gap-2">
@@ -263,6 +264,11 @@ export function HeroSection() {
             {t("hero.deck.cta.read")} ↓
           </Button>
         </motion.div>
+
+        {/* Pre-register form */}
+        <div className="mb-14">
+          <PreregisterForm source="hero" variant="compact" />
+        </div>
 
         {/* Stats card with count-up */}
         <motion.div
