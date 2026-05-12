@@ -57,7 +57,7 @@ export function DemoSection() {
           transition={{ delay: 0.3 }}
           className="mb-16"
         >
-          <Button variant="primary" size="lg" href="https://x.tony-ai.app" className="text-lg !px-12 !py-5">
+          <Button variant="primary" size="lg" href="https://tony-ai.app/" className="text-lg !px-12 !py-5">
             <RocketIcon className="w-5 h-5" />
             {t("demo.cta")}
           </Button>

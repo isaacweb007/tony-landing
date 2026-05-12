@@ -161,7 +161,7 @@ export function Navbar() {
           {/* Desktop CTA + Language */}
           <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher variant="navbar" />
-            <Button variant="primary" size="sm" href="#demo">
+            <Button variant="primary" size="sm" href="https://tony-ai.app/">
               {t("nav.cta")}
             </Button>
           </div>
@@ -301,8 +301,10 @@ export function Navbar() {
                   className="mt-5"
                 >
                   <a
-                    href="#demo"
-                    onClick={handleNavClick("#demo")}
+                    href="https://tony-ai.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => { document.body.style.overflow = ""; setMobileOpen(false); }}
                     className="block w-full text-center font-display font-semibold text-white py-4 rounded-2xl bg-gradient-to-r from-brand-primary via-brand-violet to-brand-emerald shadow-lg shadow-brand-primary/30 hover:shadow-xl hover:shadow-brand-primary/40 transition-all"
                   >
                     <span className="inline-flex items-center gap-2">

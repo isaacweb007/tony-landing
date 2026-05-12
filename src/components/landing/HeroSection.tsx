@@ -253,7 +253,7 @@ export function HeroSection() {
           transition={{ delay: 0.9, duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16"
         >
-          <Button variant="primary" size="lg" href="https://x.tony-ai.app" className="!px-8 group">
+          <Button variant="primary" size="lg" href="https://tony-ai.app/" className="!px-8 group">
             <span className="inline-flex items-center gap-2">
               {t("hero.deck.cta.demo")}
               <span className="transition-transform group-hover:translate-x-1">→</span>

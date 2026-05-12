@@ -47,8 +47,15 @@ export function Button({
   const cls = cn(base, variants[variant], sizes[size], className);
 
   if (href) {
+    const isExternal = /^https?:\/\//.test(href) || href.startsWith("mailto:");
     return (
-      <a href={href} className={cls} onClick={onClick}>
+      <a
+        href={href}
+        className={cls}
+        onClick={onClick}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
         <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
       </a>
     );
