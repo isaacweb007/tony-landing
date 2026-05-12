@@ -130,15 +130,20 @@ export function DemoSection() {
         >
           <div
             onClick={() => !playing && setPlaying(true)}
-            className="relative aspect-video rounded-2xl bg-black border border-white/10 overflow-hidden group hover:border-white/20 transition-all"
-            style={{ cursor: playing ? "default" : "pointer" }}
+            className={
+              playing
+                ? "relative aspect-video rounded-2xl bg-black border border-white/10 overflow-hidden"
+                : "relative aspect-video rounded-2xl bg-black border border-white/10 hover:border-white/20 transition-colors duration-300 overflow-hidden cursor-pointer group"
+            }
+            style={{ transform: "translateZ(0)" }}
           >
             {playing ? (
               <iframe
                 ref={iframeRef}
                 src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
                 title="Tony Demo"
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full block"
+                style={{ border: 0 }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
