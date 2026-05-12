@@ -18,10 +18,11 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-primary to-brand-violet flex items-center justify-center">
-                <span className="text-white font-display font-bold text-sm">T</span>
+              <div className="w-9 h-9 rounded-xl overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/tony-logo.png" alt="Tony" className="w-full h-full object-cover" />
               </div>
-              <span className="font-display font-bold text-lg text-white">Tony</span>
+              <span className="font-display font-bold text-lg text-white tracking-tight">Tony</span>
             </div>
             <p className="font-body text-sm text-white/30 leading-relaxed mb-4 whitespace-pre-line">
               {t("footer.tagline")}

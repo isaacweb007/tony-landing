@@ -124,10 +124,11 @@ export function Navbar() {
             onClick={handleNavClick("#")}
             className="flex items-center gap-2.5 group"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-primary to-brand-violet flex items-center justify-center shadow-lg shadow-brand-primary/20 group-hover:scale-105 transition-transform">
-              <span className="text-white font-display font-bold text-sm">T</span>
+            <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg shadow-yellow-400/20 group-hover:scale-105 transition-transform">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/tony-logo.png" alt="Tony" className="w-full h-full object-cover" />
             </div>
-            <span className="font-display font-bold text-lg text-white">Tony</span>
+            <span className="font-display font-bold text-lg text-white tracking-tight">Tony</span>
           </a>
 
           {/* Desktop Nav */}
