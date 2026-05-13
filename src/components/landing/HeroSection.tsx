@@ -274,7 +274,12 @@ export function HeroSection() {
               {t("prereg.cta")}
             </span>
           </Button>
-          <Button variant="ghost" size="lg" href="#problem" className="!px-6">
+          <Button
+            variant="ghost"
+            size="lg"
+            href="https://drive.google.com/file/d/1PWtXE9x0gD6nUK8ODbWzvW6AaWzerQsV/view?usp=sharing"
+            className="!px-6"
+          >
             {t("hero.deck.cta.read")} ↓
           </Button>
         </motion.div>

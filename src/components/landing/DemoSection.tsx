@@ -181,7 +181,11 @@ export function DemoSection() {
           transition={{ delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="secondary" size="md">
+          <Button
+            variant="secondary"
+            size="md"
+            href="https://drive.google.com/file/d/1PWtXE9x0gD6nUK8ODbWzvW6AaWzerQsV/view?usp=sharing"
+          >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
