@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Button } from "./Button";
 import { VideoModal } from "./VideoModal";
 import { PreregisterModal } from "./PreregisterModal";
 import { useT } from "@/i18n/I18nProvider";
@@ -248,40 +247,95 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* CTAs */}
+        {/* CTAs — unified premium pill row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6"
+          className="flex flex-col sm:flex-row items-stretch justify-center gap-3 mb-6"
         >
-          <Button variant="primary" size="lg" href="https://tony-ai.app/" className="!px-8 group">
-            <span className="inline-flex items-center gap-2">
-              {t("hero.deck.cta.demo")}
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </span>
-          </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            onClick={() => setPreregOpen(true)}
-            className="!px-8 group"
+          {/* Tier 1 — Primary CTA: launch demo */}
+          <a
+            href="https://tony-ai.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full font-display font-semibold text-[15px] text-white whitespace-nowrap select-none overflow-hidden
+                       bg-[linear-gradient(135deg,#2563eb_0%,#6366f1_45%,#8b5cf6_100%)]
+                       shadow-[0_10px_28px_-8px_rgba(99,102,241,0.55),inset_0_1px_0_rgba(255,255,255,0.18)]
+                       hover:shadow-[0_18px_44px_-10px_rgba(99,102,241,0.75),inset_0_1px_0_rgba(255,255,255,0.22)]
+                       hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]
+                       transition-all duration-300 will-change-transform"
           >
-            <span className="inline-flex items-center gap-2">
-              <svg className="w-4 h-4 text-brand-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            {/* shimmer sweep */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"
+              style={{
+                background:
+                  "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%)",
+              }}
+            />
+            <span className="relative z-10 inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/15 ring-1 ring-white/25">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
-              {t("prereg.cta")}
             </span>
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            href="https://drive.google.com/file/d/1PWtXE9x0gD6nUK8ODbWzvW6AaWzerQsV/view?usp=sharing"
-            className="!px-6"
+            <span className="relative z-10">{t("hero.deck.cta.demo")}</span>
+            <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+
+          {/* Tier 2 — Secondary: preregister */}
+          <button
+            onClick={() => setPreregOpen(true)}
+            className="group relative inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full font-display font-semibold text-[15px] text-white whitespace-nowrap select-none overflow-hidden
+                       bg-white/[0.04] backdrop-blur-xl
+                       ring-1 ring-inset ring-white/15
+                       shadow-[0_6px_20px_-8px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)]
+                       hover:bg-white/[0.07] hover:ring-white/30
+                       hover:shadow-[0_12px_30px_-10px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.12)]
+                       hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]
+                       transition-all duration-300 will-change-transform"
           >
-            {t("hero.deck.cta.read")} ↓
-          </Button>
+            {/* subtle emerald aura on hover */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              style={{
+                background:
+                  "radial-gradient(120% 80% at 50% 100%, rgba(16,185,129,0.22), transparent 60%)",
+              }}
+            />
+            <span className="relative z-10 inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-emerald/15 ring-1 ring-brand-emerald/30 text-brand-emerald">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <span className="relative z-10">{t("prereg.cta")}</span>
+          </button>
+
+          {/* Tier 3 — Tertiary: read deck */}
+          <a
+            href="https://drive.google.com/file/d/1PWtXE9x0gD6nUK8ODbWzvW6AaWzerQsV/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-full font-display font-semibold text-[15px] text-white/85 whitespace-nowrap select-none overflow-hidden
+                       bg-white/[0.02] backdrop-blur-xl
+                       ring-1 ring-inset ring-white/10
+                       shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]
+                       hover:bg-white/[0.05] hover:ring-white/20 hover:text-white
+                       hover:shadow-[0_10px_28px_-10px_rgba(245,158,11,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]
+                       hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]
+                       transition-all duration-300 will-change-transform"
+          >
+            <span className="relative z-10 inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-amber/15 ring-1 ring-brand-amber/30 text-brand-amber">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" />
+                <path d="M14 3v5h5M9 13h6M9 17h4" />
+              </svg>
+            </span>
+            <span className="relative z-10">{t("hero.deck.cta.read")}</span>
+            <span className="relative z-10 transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+          </a>
         </motion.div>
 
         {/* Inline reassurance line under CTAs */}
