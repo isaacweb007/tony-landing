@@ -467,15 +467,15 @@ export const dict = {
 
   // === Team ===
   "team.tag":            t("Team & Company", "Team & Company", "チーム&会社", "团队与公司", "Đội ngũ & Công ty"),
-  "team.title.1":        t("베트남의 톤코퍼레이션이", "Tone Corporation in Vietnam,", "ベトナムのトーンコーポレーションが", "越南的 Tone Corporation,", "Tone Corporation tại Việt Nam,"),
+  "team.title.1":        t("베트남의 톤 코퍼레이션이", "Ton Corporation in Vietnam,", "ベトナムのトン・コーポレーションが", "越南的 Ton Corporation,", "Ton Corporation tại Việt Nam,"),
   "team.title.2":        t("세계 시장을 노립니다", "going after the world", "世界市場を狙います", "瞄准全球市场", "nhắm thị trường thế giới"),
   "team.subtitle":       t("동남아 거점, 글로벌 인재 풀, 한국급 UX 감각. 새로운 메신저 시대의 본진은 실리콘밸리가 아닐 수도 있습니다.", "SEA roots, global talent, Korea-grade UX taste. The HQ of the next messenger era may not be in Silicon Valley.", "東南アジア拠点、グローバル人材プール、韓国級UX感覚。次世代メッセンジャーの本拠地はシリコンバレーではないかもしれません。", "东南亚根据地,全球人才池,韩国级 UX 直觉。下一代通讯应用的总部,可能不在硅谷。", "Đặt tại Đông Nam Á, nhân tài toàn cầu, gu UX kiểu Hàn. Trụ sở kỷ nguyên nhắn tin mới có thể không ở Thung lũng Silicon."),
   "team.founder.role":   t("FOUNDER & LEAD ENGINEER", "FOUNDER & LEAD ENGINEER", "FOUNDER & LEAD ENGINEER", "创始人 & 首席工程师", "FOUNDER & LEAD ENGINEER"),
   "team.founder.name":   t("Tony Hood", "Tony Hood", "Tony Hood", "Tony Hood", "Tony Hood"),
-  "team.founder.org":    t("톤코퍼레이션 (Tone Corporation), 베트남", "Tone Corporation, Vietnam", "Tone Corporation、ベトナム", "Tone Corporation,越南", "Tone Corporation, Việt Nam"),
+  "team.founder.org":    t("톤 코퍼레이션 (Ton Corporation), 베트남", "Ton Corporation, Vietnam", "Ton Corporation、ベトナム", "Ton Corporation,越南", "Ton Corporation, Việt Nam"),
   "team.founder.bio":    t("15년 메신저·AI 시스템 설계 경력. 다국적 팀 운영, 풀스택 + AI 인프라 전반. 본 프로젝트의 메인 개발자이자 비전 설계자. 글로벌 비즈니스 시대의 메신저는 어디서 만들어야 하는지 가장 잘 아는 인물.", "15 years building messengers and AI systems. Runs a multinational team across full-stack and AI infra. Lead engineer and vision architect of this project. Knows better than anyone where the next global-business messenger should be built.", "15年のメッセンジャー・AIシステム設計経験。多国籍チーム運営、フルスタック+AIインフラ全般。本プロジェクトのメイン開発者・ビジョン設計者。", "15 年通讯应用与 AI 系统设计经验。带跨国团队,全栈 + AI 基础设施。本项目主程与愿景设计师。", "15 năm xây ứng dụng nhắn tin và hệ thống AI. Quản đội đa quốc tịch, full-stack và hạ tầng AI. Kỹ sư trưởng và kiến trúc sư tầm nhìn của dự án."),
   "team.note":           t("회사 정보", "Company note", "会社情報", "公司信息", "Về công ty"),
-  "team.note.body":      t("톤코퍼레이션은 베트남 호치민에 본사를 둔 AI 메신저 전문 스타트업. 현재 다수의 시드 투자자와 활발한 논의 중이며, 첫 외부 라운드를 준비하고 있습니다.", "Tone Corporation is an AI-messenger startup based in Ho Chi Minh City, Vietnam. Currently in active discussions with seed investors, preparing for our first external round.", "トーンコーポレーションはベトナム・ホーチミンに本社を置くAIメッセンジャー特化スタートアップ。複数のシード投資家と協議中、初の外部ラウンドを準備中。", "Tone Corporation 是总部位于越南胡志明市的 AI 通讯应用专业初创。正与多位种子投资人活跃讨论,筹备首轮外部融资。", "Tone Corporation là startup chuyên ứng dụng nhắn tin AI tại TP.HCM, Việt Nam. Đang trao đổi tích cực với nhiều nhà đầu tư seed, chuẩn bị vòng gọi vốn ngoài đầu tiên."),
+  "team.note.body":      t("톤 코퍼레이션은 베트남 호치민에 본사를 둔 AI 메신저 전문 스타트업. 현재 다수의 시드 투자자와 활발한 논의 중이며, 첫 외부 라운드를 준비하고 있습니다.", "Ton Corporation is an AI-messenger startup based in Ho Chi Minh City, Vietnam. Currently in active discussions with seed investors, preparing for our first external round.", "トン・コーポレーションはベトナム・ホーチミンに本社を置くAIメッセンジャー特化スタートアップ。複数のシード投資家と協議中、初の外部ラウンドを準備中。", "Ton Corporation 是总部位于越南胡志明市的 AI 通讯应用专业初创。正与多位种子投资人活跃讨论,筹备首轮外部融资。", "Ton Corporation là startup chuyên ứng dụng nhắn tin AI tại TP.HCM, Việt Nam. Đang trao đổi tích cực với nhiều nhà đầu tư seed, chuẩn bị vòng gọi vốn ngoài đầu tiên."),
 
   // === Hero v2 (investor deck) ===
   "hero.deck.badge":     t("INVESTOR DECK · 2026", "INVESTOR DECK · 2026", "INVESTOR DECK · 2026", "INVESTOR DECK · 2026", "INVESTOR DECK · 2026"),
